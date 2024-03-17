@@ -1,19 +1,32 @@
 <form action="" method="POST">
-  <input name="fio" />
-  <input name="tel" />
-  <input name="email" />
-  <input type="radio" name="gender" value="male"> Мужской  
-  <input type="radio" name="gender" value="female"> Женский<br>    
-  <textarea name="bio"></textarea>    
-  <input type="checkbox" name="contract" value="1"> С контрактом ознакомлен(а)<br>    
-  <input type="submit" value="Сохранить" />
-  <select name="year">
+  <label for="fio">ФИО:</label>
+  <input type="text" id="fio" name="fio" required /><br>
+
+  <label for="tel">Телефон:</label>
+  <input type="tel" id="tel" name="tel" pattern="[0-9]{10}" required /><br>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required /><br>
+
+  <label>Пол:</label>
+  <input type="radio" id="male" name="gender" value="male">
+  <label for="male">Мужской</label>
+  <input type="radio" id="female" name="gender" value="female">
+  <label for="female">Женский</label><br>
+
+  <label for="bio">О себе:</label>
+  <textarea id="bio" name="bio"></textarea><br>
+
+  <input type="checkbox" id="contract" name="contract" value="1" required>
+  <label for="contract">С контрактом ознакомлен(а)</label><br>
+
+  <select id="year" name="year">
     <?php 
     for ($i = 1922; $i <= 2022; $i++) {
       printf('<option value="%d">%d год</option>', $i, $i);
     }
     ?>
-  </select>
-  
-  <input type="submit" value="ok" />
+  </select><br>
+
+  <button type="submit">Сохранить</button>
 </form>
