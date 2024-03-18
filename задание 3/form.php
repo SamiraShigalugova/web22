@@ -7,7 +7,14 @@
 
   <label for="email">Email:</label>
   <input type="email" id="email" name="email" required /><br>
+<label>Выберите ЯП<br/></label> 
+<select multiple="multiple" name="choosing"> 
+<option>C++</option> 
+<option>Pascal</option> 
+<option>JavaScript</option> 
+</select></br> 
 
+  
   <label>Пол:</label>
   <input type="radio" id="male" name="gender" value="male">
   <label for="male">Мужской</label>
