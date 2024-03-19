@@ -59,7 +59,7 @@ $db = new PDO('mysql:host=localhost;dbname=u67419', $user, $pass,
 
 // Подготовленный запрос. Не именованные метки.
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['fio']]);
 }
 catch(PDOException $e){
@@ -67,7 +67,7 @@ catch(PDOException $e){
   exit();
 }
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['tel']]);
 }
 catch(PDOException $e){
@@ -75,7 +75,7 @@ catch(PDOException $e){
   exit();
 }
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['email']]);
 }
 catch(PDOException $e){
@@ -83,7 +83,7 @@ catch(PDOException $e){
   exit();
 }
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['gender']]);
 }
 catch(PDOException $e){
@@ -91,7 +91,7 @@ catch(PDOException $e){
   exit();
 }
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['bio']]);
 }
 catch(PDOException $e){
@@ -99,7 +99,7 @@ catch(PDOException $e){
   exit();
 }
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['contract']]);
 }
 catch(PDOException $e){
@@ -107,7 +107,7 @@ catch(PDOException $e){
   exit();
 }
 try {
-  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt = $db->prepare("INSERT INTO form SET name = ?");
   $stmt->execute([$_POST['year']]);
 }
 catch(PDOException $e){
