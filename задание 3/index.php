@@ -24,7 +24,17 @@ if (empty($_POST['fio'])) {
   print('Заполните имя.<br/>');
   $errors = TRUE;
 }
-
+if (empty($_POST['tel'])) {
+  print('Заполните телефон.<br/>');
+  $errors = TRUE;
+}
+if (empty($_POST['email'])) {
+  print('Заполните почту.<br/>');
+  $errors = TRUE;
+}if (empty($_POST['gender'])) {
+  print('Выберите пол.<br/>');
+  $errors = TRUE;
+}
 if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/', $_POST['year'])) {
   print('Заполните год.<br/>');
   $errors = TRUE;
@@ -56,6 +66,55 @@ catch(PDOException $e){
   print('Error : ' . $e->getMessage());
   exit();
 }
+try {
+  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt->execute([$_POST['tel']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+try {
+  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt->execute([$_POST['email']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+try {
+  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt->execute([$_POST['gender']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+try {
+  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt->execute([$_POST['bio']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+try {
+  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt->execute([$_POST['contract']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+try {
+  $stmt = $db->prepare("INSERT INTO application SET name = ?");
+  $stmt->execute([$_POST['year']]);
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
+
 
 //  stmt - это "дескриптор состояния".
  
