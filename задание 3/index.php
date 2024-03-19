@@ -24,27 +24,28 @@ if (empty($_POST['fio'])) {
   print('Заполните имя.<br/>');
   $errors = TRUE;
 }
-if (empty($_POST['phone'])) {
+if (empty($_POST['tel'])) {
   print('Заполните телефон.<br/>');
   $errors = TRUE;
 }
 if (empty($_POST['email'])) {
   print('Заполните почту.<br/>');
   $errors = TRUE;
-}if (empty($_POST['gender'])) {
+}
+if (empty($_POST['gender'])) {
   print('Выберите пол.<br/>');
   $errors = TRUE;
 }
-if (empty($_POST['birthdate']) || !is_numeric($_POST['birthdate']) || !preg_match('/^\d+$/', $_POST['birthdate'])) {
-  print('Заполните год.<br/>');
+if (empty($_POST['year'])) {
+  print('Выберите год.<br/>');
   $errors = TRUE;
 }
 
-
-// *************
-// Тут необходимо проверить правильность заполнения всех остальных полей.
-// *************
-
+// Проверяем выбор языков программирования
+if (empty($_POST['choosing']) || !is_array($_POST['choosing'])) {
+  print('Выберите хотя бы один язык программирования.<br/>');
+  $errors = TRUE;
+}
 if ($errors) {
   // При наличии ошибок завершаем работу скрипта.
   exit();
@@ -59,58 +60,22 @@ $db = new PDO('mysql:host=localhost;dbname=u67419', $user, $pass,
 
 // Подготовленный запрос. Не именованные метки.
 try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['fio']]);
-}
-catch(PDOException $e){
+  $stmt = $db->prepare("INSERT INTO applications (fio, phone, email, gender, bio, contract, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt->execute([$_POST['fio'], $_POST['tel'], $_POST['email'], $_POST['gender'], $_POST['bio'], isset($_POST['contract']) ? 1 : 0, $_POST['year']]);
+} catch(PDOException $e){
   print('Error : ' . $e->getMessage());
   exit();
 }
+// Получаем ID последней вставленной записи
+$application_id = $db->lastInsertId();
+
+// Вставляем выбранные языки программирования в таблицу programming_languages
 try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['phone']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
-try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['email']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
-try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['gender']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
-try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['bio']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
-try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['contract']]);
-}
-catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
-try {
-  $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['birthdate']]);
-}
-catch(PDOException $e){
+  $stmt = $db->prepare("INSERT INTO programming_languages (application_id, language) VALUES (?, ?)");
+  foreach ($_POST['choosing'] as $language) {
+    $stmt->execute([$application_id, $language]);
+  }
+} catch(PDOException $e){
   print('Error : ' . $e->getMessage());
   exit();
 }
