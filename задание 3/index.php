@@ -35,7 +35,7 @@ if (empty($_POST['email'])) {
   print('Выберите пол.<br/>');
   $errors = TRUE;
 }
-if (empty($_POST['birthdate']) || !is_numeric($_POST['birthdate']) || !preg_match('/^\d+$/', $_POST['year'])) {
+if (empty($_POST['birthdate']) || !is_numeric($_POST['birthdate']) || !preg_match('/^\d+$/', $_POST['birthdate'])) {
   print('Заполните год.<br/>');
   $errors = TRUE;
 }
