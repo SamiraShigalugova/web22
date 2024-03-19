@@ -24,7 +24,7 @@ if (empty($_POST['fio'])) {
   print('Заполните имя.<br/>');
   $errors = TRUE;
 }
-if (empty($_POST['tel'])) {
+if (empty($_POST['phone'])) {
   print('Заполните телефон.<br/>');
   $errors = TRUE;
 }
@@ -35,7 +35,7 @@ if (empty($_POST['email'])) {
   print('Выберите пол.<br/>');
   $errors = TRUE;
 }
-if (empty($_POST['year']) || !is_numeric($_POST['year']) || !preg_match('/^\d+$/', $_POST['year'])) {
+if (empty($_POST['birthdate']) || !is_numeric($_POST['birthdate']) || !preg_match('/^\d+$/', $_POST['year'])) {
   print('Заполните год.<br/>');
   $errors = TRUE;
 }
@@ -68,7 +68,7 @@ catch(PDOException $e){
 }
 try {
   $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['tel']]);
+  $stmt->execute([$_POST['phone']]);
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
@@ -108,7 +108,7 @@ catch(PDOException $e){
 }
 try {
   $stmt = $db->prepare("INSERT INTO form SET name = ?");
-  $stmt->execute([$_POST['year']]);
+  $stmt->execute([$_POST['birthdate']]);
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
