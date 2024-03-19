@@ -66,19 +66,7 @@ try {
   print('Error : ' . $e->getMessage());
   exit();
 }
-// Получаем ID последней вставленной записи
-$form_id = $db->lastInsertId();
 
-// Вставляем выбранные языки программирования в таблицу programming_languages
-try {
-  $stmt = $db->prepare("INSERT INTO programming_languages (form_id, language) VALUES (?, ?)");
-  foreach ($_POST['choosing'] as $language) {
-    $stmt->execute([$form_id, $language]);
-  }
-} catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
-  exit();
-}
 
 
 //  stmt - это "дескриптор состояния".
