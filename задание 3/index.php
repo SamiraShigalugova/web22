@@ -60,20 +60,20 @@ $db = new PDO('mysql:host=localhost;dbname=u67419', $user, $pass,
 
 // Подготовленный запрос. Не именованные метки.
 try {
-  $stmt = $db->prepare("INSERT INTO applications (fio, phone, email, gender, bio, contract, birthdate) VALUES (?, ?, ?, ?, ?, ?, ?)");
+  $stmt = $db->prepare("INSERT INTO form (fio, tel, email, gender, bio, contract, year) VALUES (?, ?, ?, ?, ?, ?, ?)");
   $stmt->execute([$_POST['fio'], $_POST['tel'], $_POST['email'], $_POST['gender'], $_POST['bio'], isset($_POST['contract']) ? 1 : 0, $_POST['year']]);
 } catch(PDOException $e){
   print('Error : ' . $e->getMessage());
   exit();
 }
 // Получаем ID последней вставленной записи
-$application_id = $db->lastInsertId();
+$form_id = $db->lastInsertId();
 
 // Вставляем выбранные языки программирования в таблицу programming_languages
 try {
-  $stmt = $db->prepare("INSERT INTO programming_languages (application_id, language) VALUES (?, ?)");
+  $stmt = $db->prepare("INSERT INTO programming_languages (form_id, language) VALUES (?, ?)");
   foreach ($_POST['choosing'] as $language) {
-    $stmt->execute([$application_id, $language]);
+    $stmt->execute([$form_id, $language]);
   }
 } catch(PDOException $e){
   print('Error : ' . $e->getMessage());
