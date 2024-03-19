@@ -9,9 +9,16 @@
   <input type="email" id="email" name="email" required /><br>
 <label>Выберите ЯП<br/></label> 
 <select multiple="multiple" name="choosing"> 
-<option>C++</option> 
 <option>Pascal</option> 
+<option>C++</option> 
 <option>JavaScript</option> 
+<option>PHP</option>
+<option>Python</option> 
+<option>Java</option> 
+<option>Haskell</option> 
+<option>Clojure</option>
+<option>Prolog</option>
+<option>Scala</option> 
 </select></br> 
 
   
