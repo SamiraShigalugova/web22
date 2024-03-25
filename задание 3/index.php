@@ -15,12 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 $errors = FALSE;
 
-if (empty($_POST['name'])) {
+if (empty($_POST['names'])) {
     print('Укажите ФИО.<br/>');
     $errors = TRUE;
 } else {
-    $name = $_POST['name'];
-    if (!preg_match('/^[a-zA-Zа-яА-Я\s]{1,150}$/', $name)) {
+    $names = $_POST['names'];
+    if (!preg_match('/^[a-zA-Zа-яА-Я\s]{1,150}$/', $names)) {
         print('Неверный формат ФИО. Допустимы только буквы и пробелы, не более 150 символов.<br/>');
         $errors = TRUE;
     }
@@ -118,8 +118,8 @@ foreach ($_POST['languages'] as $language) {
 }
 
 try {
-    $stmt = $db->prepare("INSERT INTO application (names,phones,email,dates,gender,biography)" . "VALUES (:name,:phone,:email,:date,:gender,:biography)");
-    $stmt->execute(array('name' => $name, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
+    $stmt = $db->prepare("INSERT INTO application (names,phones,email,dates,gender,biography)" . "VALUES (:names,:phone,:email,:date,:gender,:biography)");
+    $stmt->execute(array('names' => $names, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
     $applicationId = $db->lastInsertId();
    
     foreach ($_POST['Languages'] as $language) {
