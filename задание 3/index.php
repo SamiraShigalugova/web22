@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 $errors = FALSE;
 
-if (empty($_POST['fio'])) {
+if (empty($_POST['name'])) {
     print('Укажите ФИО.<br/>');
     $errors = TRUE;
 } else {
-    $name = $_POST['fio'];
+    $name = $_POST['name'];
     if (!preg_match('/^[a-zA-Zа-яА-Я\s]{1,150}$/', $name)) {
         print('Неверный формат ФИО. Допустимы только буквы и пробелы, не более 150 символов.<br/>');
         $errors = TRUE;
