@@ -131,7 +131,7 @@ try {
         if ($languageRow) {
             $languageId = $languageRow['id'];
     
-            $stmt = $db->prepare("INSERT INTO application_languages (id_lang, id_app) VALUES (:languageId, :appId)");
+            $stmt = $db->prepare("INSERT INTO application_languages (id_lang, id_app) VALUES (:languageId, :applicationId)");
             $stmt->bindParam(':languageId', $languageId);
             $stmt->bindParam(':applicationId', $applicationId);
             $stmt->execute();
