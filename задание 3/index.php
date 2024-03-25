@@ -104,7 +104,7 @@ if ($errors) {
 
 $user = 'u67419';
 $pass = '8693464';
-$db = new PDO('mysql:host=localhost;dbname=u67313', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
+$db = new PDO('mysql:host=localhost;dbname=u67419', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 foreach ($_POST['languages'] as $language) {
@@ -118,7 +118,7 @@ foreach ($_POST['languages'] as $language) {
 }
 
 try {
-    $stmt = $db->prepare("INSERT INTO application (names,phones,email,dates,gender,biography)" . "VALUES (:name,:phone,:email,:date,:gender,:biography)");
+    $stmt = $db->prepare("INSERT INTO form (names,phones,email,dates,gender,biography)" . "VALUES (:name,:phone,:email,:date,:gender,:biography)");
     $stmt->execute(array('name' => $name, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
     $applicationId = $db->lastInsertId();
    
@@ -131,9 +131,9 @@ try {
         if ($languageRow) {
             $languageId = $languageRow['id'];
     
-            $stmt = $db->prepare("INSERT INTO application_languages (id_lang, id_app) VALUES (:languageId, :applicationId)");
+            $stmt = $db->prepare("INSERT INTO form_languages (id_lang, id_app) VALUES (:languageId, :formId)");
             $stmt->bindParam(':languageId', $languageId);
-            $stmt->bindParam(':applicationId', $applicationId);
+            $stmt->bindParam(':formId', $applicationId);
             $stmt->execute();
         } else {
             print('Ошибка: Не удалось найти ID для языка программирования: ' . $language . '<br/>');
