@@ -36,14 +36,14 @@ if (!empty($messages)) {
 
     <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
         <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
-        <input name="names" <?php if ($errors['names']) {print 'class="error"';} ?> value="<?php print $values['names']; ?>" />
-        <input name="phone" <?php if ($errors['phone']) {print 'class="error"';} ?> value="<?php print $values['phone']; ?>" />
-        <input name="email" <?php if ($errors['email']) {print 'class="error"';} ?> value="<?php print $values['email']; ?>" />
-        <input name="date" <?php if ($errors['date']) {print 'class="error"';} ?> value="<?php print $values['date']; ?>" />
-        <input name="gender" <?php if ($errors['gender']) {print 'class="error"';} ?> value="<?php print $values['gender']; ?>" />
-        <input name="languages" <?php if ($errors['languages']) {print 'class="error"';} ?> value="<?php print $values['languages']; ?>" />
-        <input name="biography" <?php if ($errors['biography']) {print 'class="error"';} ?> value="<?php print $values['biography']; ?>" />
-        <input name="agree" <?php if ($errors['agree']) {print 'class="error"';} ?> value="<?php print $values['agree']; ?>" />
+        <input name="names" <?php if ($errors['names']) {print 'names="error"';} ?> value="<?php print $values['names']; ?>" />
+        <input name="phone" <?php if ($errors['phone']) {print 'phone="error"';} ?> value="<?php print $values['phone']; ?>" />
+        <input name="email" <?php if ($errors['email']) {print 'email="error"';} ?> value="<?php print $values['email']; ?>" />
+        <input name="date" <?php if ($errors['date']) {print 'date="error"';} ?> value="<?php print $values['date']; ?>" />
+        <input name="gender" <?php if ($errors['gender']) {print 'gender="error"';} ?> value="<?php print $values['gender']; ?>" />
+        <input name="languages" <?php if ($errors['languages']) {print 'languages="error"';} ?> value="<?php print $values['languages']; ?>" />
+        <input name="biography" <?php if ($errors['biography']) {print 'biography="error"';} ?> value="<?php print $values['biography']; ?>" />
+        <input name="agree" <?php if ($errors['agree']) {print 'agree="error"';} ?> value="<?php print $values['agree']; ?>" />
         <input type="submit" value="ok" />
             <div class="form_item form-group">
                 <label for="formName" style="color: black;">ФИО:</label>
