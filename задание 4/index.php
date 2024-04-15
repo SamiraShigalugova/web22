@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $values['agree'] = empty($_COOKIE['agree_value']) ? '' : $_COOKIE['agree_value'];
 
     // Включаем содержимое файла формы.
-    include('form.php');
+    include('form.html');
 } elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Блок обработки POST запроса.
 
