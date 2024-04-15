@@ -47,7 +47,7 @@ if (!empty($messages)) {
         <input type="submit" value="ok" />
             <div class="form_item form-group">
                 <label for="formName" style="color: black;">ФИО:</label>
-                <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="name"
+                <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="names"
                     id="formName" placeholder="Введите ФИО">
             </div>
 
