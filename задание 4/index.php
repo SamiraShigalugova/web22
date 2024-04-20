@@ -167,7 +167,8 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     setcookie('languages_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  setcookie('languages_value', $_POST['languages'], time() + 30 * 24 * 60 * 60);
+  $languages_cookie_value = implode(',', $_POST['Languages']);
+  setcookie('languages_value', $languages_cookie_value, time() + 30 * 24 * 60 * 60);
 
   if (empty($_POST['biography'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
@@ -181,7 +182,8 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     setcookie('agree_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  setcookie('agree_value', $_POST['agree'], time() + 30 * 24 * 60 * 60);
+  $agree_cookie_value = ($_POST['agree']) ? '1' : '0';
+  setcookie('agree_value', $agree_cookie_value, time() + 30 * 24 * 60 * 60);
 
   if ($errors) {
     // При наличии ошибок перезагружаем страницу и завершаем работу скрипта.
