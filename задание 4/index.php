@@ -223,7 +223,7 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
         $stmt->execute(array('names' => $names, 'phone' => $phone, 'email' => $email, 'date' => $date, 'gender' => $gender, 'biography' => $biography));
         $applicationId = $db->lastInsertId();
       
-        foreach ($_POST['Languages'] as $language) {
+        foreach ($_POST['languages'] as $language) {
             $stmt = $db->prepare("SELECT id FROM languages WHERE title = :title");
             $stmt->bindParam(':title', $language);
             $stmt->execute();
