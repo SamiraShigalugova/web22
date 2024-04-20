@@ -9,18 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <style>
-/* Сообщения об ошибках и поля с ошибками выводим с красным бордюром. */
-.error {
-  border: 2px solid red;
-}
-</style>
 </head>
-
-
-
-
-
 
 <body>
 <?php
@@ -33,7 +22,6 @@ if (!empty($messages)) {
   print('</div>');
 }
 ?>
-
     <div class="fon1 tab mt-4 mb-4 shadow rounded" id="quf">
         <form action="index.php" method="POST" class="row mx-5 my-2 gy-1">
         <input name="names" <?php if ($errors['names']) {print 'names="error"';} ?> value="<?php print $values['names']; ?>" />
@@ -47,7 +35,7 @@ if (!empty($messages)) {
         <input type="submit" value="ok" />
             <div class="form_item form-group">
                 <label for="formName" style="color: black;">ФИО:</label>
-                <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="names"
+                <input type="text" class="form_input _req form-control w-50 shadow bg-white rounded" name="name"
                     id="formName" placeholder="Введите ФИО">
             </div>
 
