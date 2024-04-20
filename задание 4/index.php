@@ -167,7 +167,7 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     setcookie('languages_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
-  $languages_cookie_value = implode(',', $_POST['Languages']);
+  $languages_cookie_value = implode(',', $_POST['languages']);
   setcookie('languages_value', $languages_cookie_value, time() + 30 * 24 * 60 * 60);
 
   if (empty($_POST['biography'])) {
