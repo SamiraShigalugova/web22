@@ -169,7 +169,9 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     setcookie('languages_error', '1', time() + 24 * 60 * 60);
     $errors = TRUE;
   }
+  $language_string = implode(",", $_POST['languages']);
   setcookie('languages_value', $_POST['languages'], time() + 30 * 24 * 60 * 60);
+  $languages_array = explode(",", $_COOKIE['languages_value']);
 
   if (empty($_POST['biography'])) {
     // Выдаем куку на день с флажком об ошибке в поле fio.
