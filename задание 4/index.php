@@ -202,7 +202,12 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     setcookie('biography_error', '', 100000);
     setcookie('agree_error', '', 100000);
   }
-
+$names = isset($_POST['names']) ? $_POST['names'] : '';
+$phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+$email = isset($_POST['email']) ? $_POST['email'] : '';
+$date = isset($_POST['date']) ? $_POST['date'] : '';
+$gender = isset($_POST['gender']) ? $_POST['gender'] : '';
+$biography = isset($_POST['biography']) ? $_POST['biography'] : '';
   $user = 'u67419';
     $pass = '8693464';
     $db = new PDO('mysql:host=localhost;dbname=u67419', $user, $pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
