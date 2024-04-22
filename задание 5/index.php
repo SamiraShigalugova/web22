@@ -286,4 +286,4 @@ setcookie('agree_value', $_POST['agree'], time() + 30 * 24 * 60 * 60);
 
   // Делаем перенаправление.
   header('Location: ./');
-}
+?>
