@@ -170,7 +170,7 @@ setcookie('names_value', $_POST['names'], time() + 30 * 24 * 60 * 60);
     $errors = TRUE;
   }
   $language_string = implode(",", $_POST['languages']);
-  setcookie('languages_value', $_POST['languages'], time() + 30 * 24 * 60 * 60);
+  setcookie('languages_value', $language_string, time() + 30 * 24 * 60 * 60);
   $languages_array = explode(",", $_COOKIE['languages_value']);
 
   if (empty($_POST['biography'])) {
