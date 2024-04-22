@@ -229,8 +229,8 @@ $biography = isset($_POST['biography']) ? $_POST['biography'] : '';
         $applicationId = $db->lastInsertId();
       
         foreach ($_POST['languages'] as $language) {
-            $stmt = $db->prepare("SELECT id FROM languages WHERE title = :title");
-            $stmt->bindParam(':title', $language);
+            $stmt = $db->prepare("SELECT id FROM languages WHERE id = :id");
+            $stmt->bindParam(':id', $language);
             $stmt->execute();
             $languageRow = $stmt->fetch(PDO::FETCH_ASSOC);
         
