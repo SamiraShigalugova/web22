@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Вход</title>
+  <title>Вход в систему</title>
 </head>
 
 <body>
@@ -40,15 +40,15 @@ if (!empty($_SESSION['login'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
   if (!empty($_GET['nologin']))
-    print("<div>Такого логина нет</div>");
+    print("<div>Пользователя с таким логином не существует</div>");
   if (!empty($_GET['wrongpass']))
-    print("<div>Неверный пароль</div>");
+    print("<div>Неверный пароль!</div>");
 
 ?>
 
   <form action="" method="post">
-    <input name="login" placeholder="Введите ваш логин"/>
-    <input name="pass" placeholder="Введите ваш пароль"/>
+    <input name="login" placeholder="Введи логин"/>
+    <input name="pass" placeholder="Введи пароль"/>
     <input type="submit" id="login" value="Войти" />
   </form>
 
