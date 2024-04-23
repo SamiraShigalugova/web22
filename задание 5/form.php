@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Форма</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -29,7 +30,7 @@
       <br>
       <div class="form-group">
         <legend for="data"class="group" style="color: white;">Дата рождения:</legend>
-        <input type="date" id="year" size="3" name="data" <?php if ($errors['data']) {print 'class="group error"';} else print 'class="group"';?> value="<?php print $values['data']; ?>">
+        <input type="date" id="data" size="3" name="data" <?php if ($errors['data']) {print 'class="group error"';} else print 'class="group"';?> value="<?php print $values['data']; ?>">
       </div>
       <div <?php if ($errors['gender']) {print 'class="error"';} ?>>
         Пол:<br>
@@ -52,7 +53,7 @@
       <br>
       Биография:<br><textarea class="group" name="biography" rows="3" cols="30"><?php print $values['biography']; ?></textarea>
       <div  <?php if ($errors['agree']) {print 'class="error"';} ?>>
-        <input type="checkbox" name="agree" <?php if ($values['agree']) {print 'checked';} ?>> С контрактом ознакомлен(a) 
+        <input type="agree" name="agree" <?php if ($values['agree']) {print 'checked';} ?>> С контрактом ознакомлен(a) 
       </div>
       <input type="submit" id="send" value="ОТПРАВИТЬ">
     </form>
