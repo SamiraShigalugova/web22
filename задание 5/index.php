@@ -91,6 +91,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // Если нет предыдущих ошибок ввода, есть кука сессии, начали сессию и
     // ранее в сессию записан факт успешного логина.
+    if (!empty($_SESSION['login'])) {
+    printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
+}
     session_start();
     if (!empty($_COOKIE[session_name()]) && !empty($_SESSION['login'])) {
         // загрузить данные пользователя из БД
