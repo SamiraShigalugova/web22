@@ -105,9 +105,9 @@ if (empty($_COOKIE['language_value'])) {
         $stmt->execute([$_SESSION['uid']]);
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
         $values['names'] = strip_tags($row['names']);
-        $values['phone'] = strip_tags($row['phone']);
+        $values['phone'] = isset($_COOKIE['phone']) ? strip_tags($_COOKIE['phone']) : '';
         $values['email'] = strip_tags($row['email']);
-        $values['data'] = $row['data'];
+        $values['data'] = isset($_COOKIE['data']) ? $_COOKIE['data'] : '';
         $values['gender'] = $row['gender'];
         $values['biography'] = strip_tags($row['biography']);
         $values['agree'] = true; 
@@ -118,7 +118,7 @@ if (empty($_COOKIE['language_value'])) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             array_push($language, strip_tags($row['name_of_language']));
         }
-        $values['language'] = $language;
+        $values['language'] = isset($_COOKIE['language_value']) ? json_decode($_COOKIE['language_value'], true) : array();
         
         printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
     }
