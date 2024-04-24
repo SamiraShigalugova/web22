@@ -116,9 +116,9 @@ if (empty($_COOKIE['language_value'])) {
         $stmt->execute([$_SESSION['uid']]);
         $ability = array();
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            array_push($language, strip_tags($row['name_of_language']));
+            $values['language'] = isset($_COOKIE['language_value']) ? json_decode($_COOKIE['language_value'], true) : array();
         }
-        $values['language'] = isset($_COOKIE['language_value']) ? json_decode($_COOKIE['language_value'], true) : array();
+        $values['language'] = $language;
         
         printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
     }
