@@ -199,7 +199,7 @@ else {
         // кроме логина и пароля.
         $db = new PDO('mysql:host=localhost;dbname=u67419', 'u67419', '8693464', array(PDO::ATTR_PERSISTENT => true));
         
-        $stmt = $db->prepare("UPDATE application SET names = ?, phone = ?, email = ?, data = ?, gender = ?, biography = ? WHERE id = ?");
+        $stmt = $db->prepare("UPDATE application SET names = ?, phones = ?, email = ?, data = ?, gender = ?, biography = ? WHERE id = ?");
         $stmt->execute([$_POST['names'], $_POST['phone'], $_POST['email'], $_POST['data'], $_POST['gender'], $_POST['biography'], $_SESSION['uid']]);
 
         $stmt = $db->prepare("DELETE FROM languages WHERE id = ?");
