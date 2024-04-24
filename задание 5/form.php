@@ -53,7 +53,7 @@
       <br>
       Биография:<br><textarea class="group" name="biography" rows="3" cols="30"><?php print $values['biography']; ?></textarea>
       <div  <?php if ($errors['agree']) {print 'class="error"';} ?>>
-        <input type="agree" name="agree" <?php if ($values['agree']) {print 'checked';} ?>> С контрактом ознакомлен(a) 
+        <input type="checkbox" name="agree" <?php if ($values['agree']) {print 'checked';} ?> value="1"> С контрактом ознакомлен(a) 
       </div>
       <input type="submit" id="send" value="ОТПРАВИТЬ">
     </form>
