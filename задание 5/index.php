@@ -73,29 +73,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     // Складываем предыдущие значения полей в массив, если есть.
     // При этом санитизуем все данные для безопасного отображения в браузере.
     $values = array();
-    $values['names'] = empty($_COOKIE['names_value']) ? '' : strip_tags($_COOKIE['names_value']);
-    if (isset($_COOKIE['phone'])) {
-    $values['phone'] = strip_tags($_COOKIE['phone']);
-} else {
-    $values['phone'] = '';
-}
-    $values['email'] = empty($_COOKIE['email_value']) ? '' : strip_tags($_COOKIE['email_value']);
-    if (isset($_COOKIE['data'])) {
-    $values['data'] = $_COOKIE['data'];
-} else {
-    $values['data'] = '';
-}
-    $values['gender'] = empty($_COOKIE['gender_value']) ? '' : $_COOKIE['gender_value'];
-    $values['biography'] = empty($_COOKIE['biography_value']) ? '' : strip_tags($_COOKIE['biography_value']);
-    $values['agree'] = empty($_COOKIE['agree_value']) ? '' : $_COOKIE['agree_value']; 
-if (isset($_COOKIE['language_value'])) {
-    $values['language'] = json_decode($_COOKIE['language_value'], true);
-} else {
-    $values['language'] = array();
-}
-
-    // Убедимся, что переменная $language определена.
-    $language = isset($language) ? $language : array();
+$values['names'] = isset($_COOKIE['names_value']) ? strip_tags($_COOKIE['names_value']) : '';
+$values['phone'] = isset($_COOKIE['phone_value']) ? strip_tags($_COOKIE['phone_value']) : '';
+$values['email'] = isset($_COOKIE['email_value']) ? strip_tags($_COOKIE['email_value']) : '';
+$values['data'] = isset($_COOKIE['data_value']) ? $_COOKIE['data_value'] : '';
+$values['gender'] = isset($_COOKIE['gender_value']) ? $_COOKIE['gender_value'] : '';
+$values['biography'] = isset($_COOKIE['biography_value']) ? strip_tags($_COOKIE['biography_value']) : '';
+$values['agree'] = isset($_COOKIE['agree_value']) ? $_COOKIE['agree_value'] : ''; 
+$values['language'] = isset($_COOKIE['language_value']) ? json_decode($_COOKIE['language_value'], true) : array();
 
     // Если нет предыдущих ошибок ввода, есть кука сессии, начали сессию и
     // ранее в сессию записан факт успешного логина.
