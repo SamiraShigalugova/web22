@@ -80,7 +80,14 @@ $values['data'] = isset($_COOKIE['data_value']) ? $_COOKIE['data_value'] : '';
 $values['gender'] = isset($_COOKIE['gender_value']) ? $_COOKIE['gender_value'] : '';
 $values['biography'] = isset($_COOKIE['biography_value']) ? strip_tags($_COOKIE['biography_value']) : '';
 $values['agree'] = isset($_COOKIE['agree_value']) ? $_COOKIE['agree_value'] : ''; 
-$values['language'] = isset($_COOKIE['language_value']) ? json_decode($_COOKIE['language_value'], true) : array();
+if (empty($_COOKIE['language_value'])) {
+        $values['language'] = array();
+    } else {
+        $values['language'] = json_decode($_COOKIE['language_value'], true);  
+    }
+
+    // Убедимся, что переменная $language определена.
+    $language = isset($language) ? $language : array();
 
     // Если нет предыдущих ошибок ввода, есть кука сессии, начали сессию и
     // ранее в сессию записан факт успешного логина.
