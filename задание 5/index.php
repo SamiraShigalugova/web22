@@ -227,7 +227,7 @@ else {
         // Сохранение данных формы, логина и хеш md5() пароля в базу данных.
         $db = new PDO('mysql:host=localhost;dbname=u67419', 'u67419', '8693464', array(PDO::ATTR_PERSISTENT => true));
 
-        $stmt = $db->prepare("INSERT INTO application SET namess = ?, phones = ?, email = ?, dates = ?, gender = ?, biographys = ?");
+        $stmt = $db->prepare("INSERT INTO application SET names = ?, phones = ?, email = ?, dates = ?, gender = ?, biographys = ?");
         $stmt->execute([$_POST['names'], $_POST['phone'], $_POST['email'], $_POST['data'], $_POST['gender'], $_POST['biography']]);
         
         $res = $db->query("SELECT max(id) FROM application");
