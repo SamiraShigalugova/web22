@@ -26,10 +26,10 @@
       <br>
       Телефон:<br><input type="tel" name="phone" <?php if ($errors['phone']) {print 'class="group error"';} else print 'class="group"'; ?> value="<?php print $values['phone']; ?>">
       <br>
-      E-mail:<br><input type="text" name="email" <?php if ($errors['email']) {print 'class="group error';} else print 'class="group"'; ?> value="<?php print $values['email']; ?>">
-      <br>
+      E-mail:
+        <br><input type="text" name="email" <?php if ($errors['email']) {print 'class="group error';} else print 'class="group"'; ?> value="<?php print $values['email']; ?>"><br>
+      Дата рождения:
       <div class="form-group">
-        <legend for="data"class="group" style="color: white;">Дата рождения:</legend>
         <input type="date" id="data" size="3" name="data" <?php if ($errors['data']) {print 'class="group error"';} else print 'class="group"';?> value="<?php print $values['data']; ?>">
       </div>
       <div <?php if ($errors['gender']) {print 'class="error"';} ?>>
