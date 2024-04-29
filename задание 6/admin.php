@@ -27,7 +27,7 @@ foreach ($usersData as $userData) {
     echo '<td>' . $userData['names'] . '</td>';
     echo '<td>' . $userData['phones'] . '</td>';
     echo '<td>' . $userData['email'] . '</td>';
-    echo '<td>' . $userData['data'] . '</td>';
+    echo '<td>' . $userData['dates'] . '</td>';
     echo '<td>' . $userData['gender'] . '</td>';
     echo '<td>' . $userData['biography'] . '</td>';
 
