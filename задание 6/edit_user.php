@@ -25,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
     $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
     $stmt->execute([$_GET['id']]);
 
-    // Перенаправление на главную страницу после удаления
-    header("Location: index.php");
+    header("Location: admin.php");
     exit();
 }
 
@@ -46,8 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
         $_GET['id']
     ]);
 
-    // Перенаправление на главную страницу после обновления
-    header("Location: index.php");
+    header("Location: admin.php");
     exit();
 }
 ?>
