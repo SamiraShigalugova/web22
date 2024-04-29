@@ -51,7 +51,7 @@ $languagesStats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo '<h2>Статистика по языкам программирования</h2>';
 echo '<ul>';
 foreach ($languagesStats as $languageStat) {
-    echo '<li>' . $languageStat['name_of_language'] . ': ' . $languageStat['count'] . ' пользователей</li>';
+    echo '<li>' . $languageStat['id_lang'] . ': ' . $languageStat['count'] . ' пользователей</li>';
 }
 echo '</ul>';
 
