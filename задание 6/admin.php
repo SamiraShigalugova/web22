@@ -32,7 +32,7 @@ foreach ($usersData as $userData) {
     echo '<td>' . $userData['biography'] . '</td>';
 
     // Извлечение языков программирования для данного пользователя
-    $stmt = $db->prepare("SELECT title FROM application_languages WHERE id = ?");
+    $stmt = $db->prepare("SELECT id_lang FROM application_languages WHERE id = ?");
     $stmt->execute([$userData['id']]);
     $userLanguages = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
@@ -45,7 +45,7 @@ foreach ($usersData as $userData) {
 echo '</table>';
 
 // Вывод статистики по языкам программирования
-$stmt = $db->query("SELECT name_of_language, COUNT(*) AS count FROM application_languages GROUP BY name_of_language");
+$stmt = $db->query("SELECT id_lang, COUNT(*) AS count FROM application_languages GROUP BY name_of_language");
 $languagesStats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<h2>Статистика по языкам программирования</h2>';
