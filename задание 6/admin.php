@@ -32,7 +32,7 @@ foreach ($usersData as $userData) {
     echo '<td>' . $userData['biography'] . '</td>';
 
     // Извлечение языков программирования для данного пользователя
-    $stmt = $db->prepare("SELECT name_of_language FROM application_languages WHERE id = ?");
+    $stmt = $db->prepare("SELECT title FROM application_languages WHERE id = ?");
     $stmt->execute([$userData['id']]);
     $userLanguages = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
