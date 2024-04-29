@@ -19,23 +19,6 @@ if (!$userData) {
     exit();
 }
 
-// Если форма была отправлена для удаления
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
-    // Получаем идентификатор пользователя, которого нужно удалить
-    $userId = $_GET['id'];
-    
-    // Удаление связанных записей из таблицы application_languages
-    $stmt = $db->prepare("DELETE FROM application_languages WHERE id_app = ?");
-    $stmt->execute([$userId]);
-    
-    // Затем удаляем пользователя из таблицы application
-    $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
-    $stmt->execute([$userId]);
-    
-    header("Location: admin.php");
-    exit();
-}
-
 // Если форма была отправлена для обновления
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     // Обработка данных формы
@@ -51,6 +34,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
         $_POST['biography'],
         $_GET['id']
     ]);
+
+    header("Location: admin.php");
+    exit();
+}
+
+// Если форма была отправлена для удаления
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
+    // Получаем идентификатор пользователя, которого нужно удалить
+    $userId = $_GET['id'];
+
+    // Удаление связанных записей из таблицы application_languages
+    $stmt = $db->prepare("DELETE FROM application_languages WHERE id_app = ?");
+    $stmt->execute([$userId]);
+
+    // Затем удаляем пользователя из таблицы application
+    $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
+    $stmt->execute([$userId]);
 
     header("Location: admin.php");
     exit();
