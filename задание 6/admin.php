@@ -45,7 +45,7 @@ foreach ($usersData as $userData) {
 echo '</table>';
 
 // Вывод статистики по языкам программирования
-$stmt = $db->query("SELECT id_lang, COUNT(*) AS count FROM application_languages GROUP BY name_of_language");
+$stmt = $db->query("SELECT id_lang, COUNT(*) AS count FROM application_languages GROUP BY id_lang");
 $languagesStats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo '<h2>Статистика по языкам программирования</h2>';
