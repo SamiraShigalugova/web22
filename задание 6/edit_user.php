@@ -19,8 +19,19 @@ if (!$userData) {
     exit();
 }
 
-// Если форма была отправлена
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Если форма была отправлена для удаления
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['delete'])) {
+    // Удаление пользователя из базы данных
+    $stmt = $db->prepare("DELETE FROM application WHERE id = ?");
+    $stmt->execute([$_GET['id']]);
+
+    // Перенаправление на главную страницу после удаления
+    header("Location: index.php");
+    exit();
+}
+
+// Если форма была отправлена для обновления
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['update'])) {
     // Обработка данных формы
 
     // Пример обновления данных пользователя в базе данных
@@ -66,7 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </select><br>
         <label for="biography">Биография:</label><br>
         <textarea id="biography" name="biography"><?php echo $userData['biography']; ?></textarea><br>
-        <input type="submit" value="Сохранить изменения">
+        <input type="submit" name="update" value="Сохранить изменения">
+        <input type="submit" name="delete" value="Удалить пользователя" onclick="return confirm('Вы уверены, что хотите удалить этого пользователя?')">
     </form>
 </body>
 </html>
