@@ -5,7 +5,7 @@ if (empty($_SERVER['PHP_AUTH_USER']) ||
     empty($_SERVER['PHP_AUTH_PW']) ||
     $_SERVER['PHP_AUTH_USER'] != 'admin' ||
     md5($_SERVER['PHP_AUTH_PW']) != md5('123')) {
-    header('HTTP/1.1 401 Unanthorized');
+    header('HTTP/1.1 401 Unauthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация</h1>');
     exit();
@@ -39,7 +39,7 @@ foreach ($usersData as $userData) {
     echo '<td>' . implode(', ', $userLanguages) . '</td>';
 
     // Действия: редактирование и удаление
-    echo '<td><a href="edit_user.php?id=' . $userData['id'] . '">Редактировать</a> | <a href="delete_user.php?id=' . $userData['id'] . '">Удалить</a></td>';
+    echo '<td><a href="edit_user.php?id=' . $userData['id'] . '">Редактировать</a> | <form action="delete_user.php" method="post"><input type="hidden" name="id" value="' . $userData['id'] . '"><input type="submit" value="Удалить"></form></td>';
     echo '</tr>';
 }
 echo '</table>';
