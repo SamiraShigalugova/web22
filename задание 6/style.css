@@ -49,7 +49,6 @@ label {
     border-color: red; /* Красная рамка для элементов с ошибкой */
 }
 /* Стили для поля с ФИО */
-/* Стили для поля с ФИО */
 input[name="names"] {
     border: 1px solid #ced4da; /* Цвет границы поля */
     border-radius: 4px; /* Закругление углов */
@@ -119,10 +118,11 @@ table td {
 .action-buttons .delete-button {
     background-color: #dc3545; /* Цвет фона */
     color: #fff; /* Цвет текста */
-    padding: 5px 10px; /* Внутренний отступ */
+    padding: 8px 16px; /* Внутренний отступ */
     border: none; /* Убираем границу */
     border-radius: 5px; /* Закругление углов */
     cursor: pointer; /* Курсор при наведении */
+    transition: background-color 0.3s; /* Плавное изменение цвета фона */
 }
 
 /* Стили для кнопки удаления при наведении */
