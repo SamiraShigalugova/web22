@@ -105,7 +105,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
     }
 
-    include('form.php');
+    $file = 'form.php';
+if (file_exists($file)) {
+    include($file);
+} else {
+    echo "Файл не найден.";
+}
 } else {
     $errors = FALSE;
     if (empty($_POST['names'])) {
